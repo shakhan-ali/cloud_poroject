@@ -1,0 +1,46 @@
+{% extends '_base.html' %}
+{% load static %}
+
+    {% block title %}API Documentation{% endblock title %}
+
+    {% block content %}
+    <style>
+        nav {
+          background-image: none;
+        }
+        span {
+          margin-left: 2rem;
+        }
+      
+        .digit {
+          color: rgb(1, 189, 189);
+          margin-left: 0;
+        }
+      </style>
+      
+      <div class="container">
+        <div class="card">
+          <div class="card-body">
+            <h2>API Documentation</h2>
+            <hr />
+            Make a GET request to <code>/api/&lt;isbn&gt;</code> route, where
+            <code>&lt;isbn&gt;</code> is an ISBN number.
+            <hr />
+            JSON
+            <br />
+            <code
+              >{<br />
+              <span>"title": "The Hobbit",</span> <br /><span
+                >"author": "J. R. R. Tolkien",</span
+              >
+              <br /><span>"year": <span class="digit">1937</span>,</span> <br /><span
+                >"isbn": "1632168146",</span
+              >
+              <br /><span>"review": <span class="digit">28</span>,</span>
+              <br /><span>"description": "The Hobbit, or There and Back Again is a fantasy novel by English"</span>
+              <br />}
+            </code>
+          </div>
+        </div>
+      </div>
+    {% endblock content %}

@@ -1,0 +1,74 @@
+{% extends '_base.html' %}
+{% load static %}
+
+
+    {% block title %}Home{% endblock title %}
+
+ 
+       <!--
+            <h1>Search For Books</h1>
+        <form class="form-inlin mt-2 mt-md-0" action="{% url 'search_results' %}" method="GET">
+            <input name="q" class="form-control mr-sm-2" type="text" placeholder="Search for book eg: The Hobbit" aria-label="Search">
+            <input class="btn btn-success" type="submit" value="Search">
+        </form>  
+        --> 
+        {% block content %}
+        <style>
+          
+
+
+.search img {
+  max-width: 50rem;
+  min-height: auto;
+}
+
+.search {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #2222229c;
+  padding: 2rem;
+  box-shadow: -2px 4px 31px #00000069;
+}
+
+.search input {
+  margin: 1rem 0;
+  width: 20rem;
+}
+
+@media (max-width: 800px) {
+  .search input {
+    width: 90%;
+  }
+}
+
+
+        </style>
+
+        <div class="container " id="zabi1">
+          <form action="{% url 'search_results' %}" method="GET">
+            <div class="search">
+              <img src="{% static 'images/bg.JPG'%}" alt="logo" />
+        
+              <input
+                type="text"
+                class="form-control"
+                name="q"
+                placeholder="Search For Resources"
+                aria-label="Search"
+              />
+              <button class="btn" type="submit" value="Search">Search</button>
+            </div>
+          </form>
+          <div>
+
+  
+    
+
+
+ 
+   
+  </div>
+</div>
+
+{% endblock content %} 
