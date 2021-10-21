@@ -31,11 +31,12 @@
           <input name="q"  type="text" class="form-control form-control-dark" placeholder="Search..." aria-label="Search">
         </form>
 
-       
+      
 
         <div class="text-end">
           {% if user.is_authenticated %}
           <button type="button" class="btn btn-outline-light me-2"> <a href="{% url 'account_logout' %}">Log Out</a></button>
+          <button type="button" class="btn btn-warning">Welcome, {{ user.username }}</button>
         {% else %}
         <button type="button" class="btn btn-outline-light me-2"><a  href="{% url 'account_login' %}">Log In</a></button>
         <button type="button" class="btn btn-warning"><a href="{% url 'signup' %}">Register</a></button>

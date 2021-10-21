@@ -6,12 +6,14 @@ services:
     
     volumes:
       - ./django1:/code
-      - ./django1/staticfiles:/static #try to comment this
+      - ./django1/staticfiles:/static 
     ports:
       - 8000:8000
     depends_on:
       - postgresql-master
-    
+    restart: always
+    networks:
+      - djangonet
     environment:
       - "DJANGO_SECRET_KEY=0s4rlvk#160#ay(@j-4twe22_w52y!p^^+si#(7x94v=$$0dxo4"
       - "DJANGO_DEBUG=True"
@@ -28,6 +30,9 @@ services:
       - '5432'
     volumes:
       - 'postgresql_master_data:/bitnami/postgresql'
+    restart: always
+    networks:
+      - djangonet
     environment:
       - POSTGRESQL_REPLICATION_MODE=master
       - POSTGRESQL_REPLICATION_USER=repl_user
@@ -35,12 +40,16 @@ services:
       - POSTGRESQL_USERNAME=my_user
       - POSTGRESQL_PASSWORD=my_password
       - POSTGRESQL_DATABASE=my_database
+
   postgresql-slave1:
     image: 'bitnami/postgresql:latest'
     ports:
       - '5432'
     depends_on:
       - postgresql-master
+    restart: always
+    networks:
+      - djangonet
     environment:
       - POSTGRESQL_REPLICATION_MODE=slave
       - POSTGRESQL_REPLICATION_USER=repl_user
@@ -55,6 +64,9 @@ services:
       - '5432'
     depends_on:
       - postgresql-master
+    restart: always
+    networks:
+      - djangonet
     environment:
       - POSTGRESQL_REPLICATION_MODE=slave
       - POSTGRESQL_REPLICATION_USER=repl_user
@@ -71,7 +83,14 @@ services:
       - 8070:8070
     depends_on:
       - web
+    restart: always
+    networks:
+      - djangonet
 
 volumes:
   postgresql_master_data:
+
+networks:
+  djangonet:
+    driver: bridge
    
